@@ -1,29 +1,25 @@
 #include <Attack.h>
 
 
-double Attack::orbit(const double camera_values[cam_packet_size]){
+float Attack::orbit(const float camera_values[cam_packet_size-1]){ 
 
-    double x_ball = camera_values[0]; //x-coord of ball
-    double y_ball = camera_values[1]; //y-coord of ball  
-    int ball_offset_buffer = ball_radius
-
-    if (y_ball <= int ball_offset_buffer) { //remember ball_radius = ball_offset_buffer/asin(M_PI/180 * theta)
+    if (camera_values[1] <= ball_radius) { //remember ball_radius = ball_offset_buffer/asin(M_PI/180 * theta)
         virtual_direction = (180 - virtual_theta);
-        virtual_distance = sqrt((pow(x_ball, 2) + pow(y_ball, 2)) - pow(ball_radius, 2));
-
-    else if (y_ball >  ball_offset_buffer) {
-        if (x_ball < 0) { //fourth quadrant
-            virtual_direction = 180 - atan2(y_ball, x_ball); //add 90 degrees to the location of the ball
-            virtual_distance = sqrt(pow(x_ball, 2) + pow(y_ball, 2));
+        virtual_distance = ball_distance - pow(ball_radius, 2);
+    }
+    else if (camera_values[1] >  ball_radius) {
+        if (camera_values[0] < 0) { //fourth quadrant
+            virtual_direction = 180 - ball_angle; //add 90 degrees to the location of the ball
+            virtual_distance = ball_distance;
         }
-        else // third quadrant
-            virtual_direction = -180 + atan2(y_ball, x_ball); //add 90 degrees to the location of the ball
-            virtual_distance = sqrt(pow(x_ball, 2) + pow(y_ball, 2));
+        else { // third quadrant
+            virtual_direction = -180 + ball_angle; //add 90 degrees to the location of the ball
+            virtual_distance = ball_distance;
         }
-        
+    }   
     else {
-        virtul_direction = 0
-        virtual_distance = 50
+        virtual_direction = 0;
+        virtual_distance = 10; // change as needed
     }
     
 }

@@ -16,7 +16,7 @@
 #define cam_packet_size 3
 
 //Attack
-#define ball_radius 5 //cm offsett from y_coord of ball
+#define ball_radius 5 //cm offsett from the of ball -> think of it like a range of error
 #define virtual_theta 60 //angle in degrees of virtual point horizontal across ball
 
 //LS

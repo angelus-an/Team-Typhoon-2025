@@ -4,12 +4,17 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <Camera.h>
+#include <LS.h>
+#include <Attack.h>
 
 Motors motor;
 PID compass_pid(compass_P, compass_I, compass_D, absolute_max);
 Adafruit_BNO055 bno;
 sensors_event_t extract_bno;
 Camera camera;
+LS light_sensor;
+Attack attack;
+
 
 
 
@@ -45,10 +50,12 @@ void loop() {
   }
   float correction = compass_pid.update(extract_bno.orientation.x,0);
     motor.move(0,0,correction);
+  
 
   
 
   // If ls_ring is not touching any white lines
+    // Camera gives x and y to teensy
     // If ball is behind offsett buffer, 
       // orbit function
     // Elif, ball is in front (between -5 and 5 degrees) but not directly in front

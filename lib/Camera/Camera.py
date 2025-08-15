@@ -40,9 +40,7 @@ while(True):
         blob = max(blobs, key=lambda b: b.pixels())
         data[0] = -(blob.cy() - FRAME_HEIGHT/2) # distance_x
         data[1] = (blob.cx() - FRAME_WIDTH/2) #distance_y
-        uart.write(bytes([254, int(data[1]), int(data[0])]))  # optional offset for 0-255
-    else:
-        print("No orange values")_
+        uart.write(bytes([254, int(data[0]), int(data[1])]))  # opget the vertical and horizontal right
     if draw:
         img.draw_circle(120, 120, 116)
         img.draw_line(int(round(FRAME_WIDTH)/2 - 10), int(round(FRAME_HEIGHT / 2)), int(round(FRAME_WIDTH / 2) + 10), int(round(FRAME_HEIGHT / 2)))
