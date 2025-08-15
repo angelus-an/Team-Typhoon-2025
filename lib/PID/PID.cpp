@@ -1,7 +1,7 @@
 #include <PID.h>
 
 
-void PID::PID(double p, double i, double d, double absolute_maximum){
+PID::PID(float p, float i, float d, float absolute_maximum){
     //pinMode -> sets pin to a particular Mode --> pinMode(digital pin, input [if sensor], output [if motor])
     P = p;
     I = i;

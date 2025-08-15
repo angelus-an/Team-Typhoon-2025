@@ -8,9 +8,9 @@
 class Motors{
     public:
         void init();
-        void update(int speed[4]);
+        void update(float speed[4]);
         Motors(){}
-        void move(int speed, int direction, int rotation);
+        void move(float speed, float  direction, float rotation);
     private:
         int motorPins[4][3]={{0},{0},{0},{0}}; //{FL}, {Fr}, {BR}, {BL} 
 

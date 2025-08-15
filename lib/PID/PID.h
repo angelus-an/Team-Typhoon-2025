@@ -7,7 +7,7 @@
 
 class PID{
     public:
-        PID(double p, double i, double d, double absolute_maximum);
+        PID(float p, float i, float d, float absolute_maximum);
         double update(double current, double goal); //takes in current value and the goal and returns the correction
     private:
         double P; 
@@ -15,7 +15,7 @@ class PID{
         double D;
         double absolute_max;
         unsigned long last_update;
-        double last_current
+        double last_current;
 };
 
 #endif

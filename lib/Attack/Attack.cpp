@@ -1,56 +1,29 @@
 #include <Attack.h>
 
 
-//States Orbit ############################################################################################################################
-//
-//If robot is far away:    
-//  go to ball
-//else go forward
+double Attack::orbit(const double camera_values[cam_packet_size]){
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-double Attack::orbit(const double camera_values[array_length]){
-
-    double x_ball = camera_values[6]; //x-coord of ball
-    double y_ball = camera_values[7]; //y-coord of ball  
+    double x_ball = camera_values[0]; //x-coord of ball
+    double y_ball = camera_values[1]; //y-coord of ball  
     int ball_offset_buffer = ball_radius
 
     if (y_ball <= int ball_offset_buffer) { //remember ball_radius = ball_offset_buffer/asin(M_PI/180 * theta)
-        virtual_y = y_ball - ((ball_offset_buffer/sin(M_PI/180 * theta) * sin(M_PI/180 * theta)); //y_coordinate of virtual point
-        if (x_ball >= 0) { //quadrant 4
-            virtual_x = x_ball - ((ball_offset_buffer/sin(M_PI/180 * theta) * cos(M_PI/180 * theta))); //x_coordinate of virtual point -> can adjust ball_radius and theta
-        }    
-        if (x_ball < 0) {//quadrant 3
-            virtual_x = x_ball + ((ball_offset_buffer/sin(M_PI/180 * theta) * cos(M_PI/180 * theta));//+ since the number u have to add to x to get virt_x is positive
-        }
-    }
+        virtual_direction = (180 - virtual_theta);
+        virtual_distance = sqrt((pow(x_ball, 2) + pow(y_ball, 2)) - pow(ball_radius, 2));
 
     else if (y_ball >  ball_offset_buffer) {
-        virtual_y = y_ball - ball_offset_buffer;
-        virtual_x = x_ball;
-        //add 90 degrees to the location of the ball
-    }
-
+        if (x_ball < 0) { //fourth quadrant
+            virtual_direction = 180 - atan2(y_ball, x_ball); //add 90 degrees to the location of the ball
+            virtual_distance = sqrt(pow(x_ball, 2) + pow(y_ball, 2));
+        }
+        else // third quadrant
+            virtual_direction = -180 + atan2(y_ball, x_ball); //add 90 degrees to the location of the ball
+            virtual_distance = sqrt(pow(x_ball, 2) + pow(y_ball, 2));
+        }
+        
     else {
-        //go forwards #########################################################
+        virtul_direction = 0
+        virtual_distance = 50
     }
     
 }

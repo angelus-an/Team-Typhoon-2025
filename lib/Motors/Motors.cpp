@@ -11,7 +11,7 @@ void Motors::init(){
     }
 }
 
-void Motors::update(int speed[4]){
+void Motors::update(float speed[4]){
     for (int i = 0; i < 4; i++) {
         if(speed[i] > 0) {
             digitalWrite(motorPins[i][0], HIGH); //motorPins[i][0] -> pin INA
@@ -46,5 +46,6 @@ void Motors::move(float speed, float direction, float rotation) { //I put the fl
         motorSpeeds[num_motors]*=(100/largest);
     }
     update(motorSpeeds);
+}
 
 

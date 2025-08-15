@@ -13,7 +13,7 @@ class Attack {
         Attack(){};
         float virtual_x;
         float virtual_y;
-        float orbit(const float camera_values[array_length]); //returns virtual point needed for orbit
+        float orbit(const float camera_values[cam_packet_size]); //returns virtual point needed for orbit
     private:
 
 };

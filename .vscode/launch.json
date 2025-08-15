@@ -12,9 +12,9 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug",
-            "executable": "C:/Users/27398/Documents/PlatformIO/Projects/Robotics/.pio/build/teensy41/firmware.elf",
+            "executable": "C:/Users/jaemi/OneDrive/Desktop/Robotics/Team-Typhoon-2025/.pio/build/teensy41/firmware.elf",
             "projectEnvName": "teensy41",
-            "toolchainBinDir": "C:/Users/27398/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
+            "toolchainBinDir": "C:/Users/jaemi/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": {
                 "type": "PlatformIO",
@@ -25,18 +25,18 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
-            "executable": "C:/Users/27398/Documents/PlatformIO/Projects/Robotics/.pio/build/teensy41/firmware.elf",
+            "executable": "C:/Users/jaemi/OneDrive/Desktop/Robotics/Team-Typhoon-2025/.pio/build/teensy41/firmware.elf",
             "projectEnvName": "teensy41",
-            "toolchainBinDir": "C:/Users/27398/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
+            "toolchainBinDir": "C:/Users/jaemi/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
             "internalConsoleOptions": "openOnSessionStart"
         },
         {
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (without uploading)",
-            "executable": "C:/Users/27398/Documents/PlatformIO/Projects/Robotics/.pio/build/teensy41/firmware.elf",
+            "executable": "C:/Users/jaemi/OneDrive/Desktop/Robotics/Team-Typhoon-2025/.pio/build/teensy41/firmware.elf",
             "projectEnvName": "teensy41",
-            "toolchainBinDir": "C:/Users/27398/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
+            "toolchainBinDir": "C:/Users/jaemi/.platformio/packages/toolchain-gccarmnoneeabi-teensy/bin",
             "internalConsoleOptions": "openOnSessionStart",
             "loadMode": "manual"
         }

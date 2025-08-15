@@ -10,7 +10,7 @@
 class Camera {
     public:
         Camera(){};
-        float cam_buffer[cam_packet_size - 1]
+        float cam_buffer[cam_packet_size - 1];
         void init();
         void read();
         float yellow_distance;
@@ -20,7 +20,7 @@ class Camera {
         float ball_distance;
         float ball_angle;
     private:
-
+        float cam_values[6]; // I think it is six because of cam_packet_size -1 = 6
 };
 
 

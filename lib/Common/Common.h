@@ -13,9 +13,11 @@
 //Camera
 #define baud_rate 115200
 #define camera_serial Serial7
-#define cam_packet_size 7
+#define cam_packet_size 3
+
+//Attack
 #define ball_radius 5 //cm offsett from y_coord of ball
-#define theta 60 //angle in degrees of virtual point horizontal across ball
+#define virtual_theta 60 //angle in degrees of virtual point horizontal across ball
 
 //LS
 #define LS_NUM 16
