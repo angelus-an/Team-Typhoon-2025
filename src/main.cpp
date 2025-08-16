@@ -4,16 +4,21 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <Camera.h>
-#include <LS.h>
-#include <Attack.h>
+
+#include <Pins.h>
+#include <Common.h>
+#include <Vect.h>
+#include <i2c.h>
+
+
 
 Motors motor;
 PID compass_pid(compass_P, compass_I, compass_D, absolute_max);
 Adafruit_BNO055 bno;
-sensors_event_t extract_bno;
+sensors_event_t currentHeading;
+sensors_event_t targetHeading;
 Camera camera;
-LS light_sensor;
-Attack attack;
+PID orbit_pid(1.5, 0.0, 0.0, 10);
 
 
 
@@ -23,37 +28,50 @@ Attack attack;
 
 
 void setup() {
+  Serial.begin(115200);
   motor.init();
-  while (!(bno.begin())){
-    Serial.println("BNO not working");
-  }
-  bno.setExtCrystalUse(true);
+  camera.init();
+  // I2Cscan();
+  // while (!(bno.begin())){
+  //   Serial.println("BNO not working");
+  // }
+  // bno.setExtCrystalUse(true);
+  // targetHeading = currentHeading;  
+  
+
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 void loop() {
-  bno.getEvent(&extract_bno); //whenever want to access the actual bno heading use extract_bn0.orientation.x
-  if (extract_bno.orientation.x > 180) { //for values to be from -180 to 180 not 0 to 360 because the robot is a dumb shit
-    extract_bno.orientation.x -= 360;
-  }
-  float correction = compass_pid.update(extract_bno.orientation.x,0);
-    motor.move(0,0,correction);
-  
+  //BNO
+  //digitalWrite(13, HIGH);
+  // bno.getEvent(&currentHeading); //whenever want to access the actual bno heading use extract_bn0.orientation.x
+  // float heading = floatMod(currentHeading.orientation.x - targetHeading.orientation.x,360);
+  //  float correction = compass_pid.update(heading,0);
+  // motor.move(0,0,correction);
+
+  // //PID for ball  
+  camera.read();
+  Vect ball = camera.getBall();
+  // Serial.println(ball.arg);
+
+  // if(ball.mag > 50) {
+  //   motor.move(1, ball.arg, 0); //correction
+  // }
+  // else {
+  //   float ang = -orbit_pid.update(ball.arg, 0);
+  //   motor.move(40, ang, 0); //correction
+  // }
+}
+
+  //PID for goal
+  // Vect attack_goal = camera.getAttack();
+  // float attack_goal_angle = (attack_goal.arg < 180) ? attack_goal.arg - 360 : attack_goal.arg;
+  // motor.move(30, 0, attack_goal_angle.arg); //change 0 to ang
+
 
   
-
   // If ls_ring is not touching any white lines
     // Camera gives x and y to teensy
     // If ball is behind offsett buffer, 
@@ -84,5 +102,5 @@ void loop() {
 
   // //function to get it to move forward 
 
-}
+
 

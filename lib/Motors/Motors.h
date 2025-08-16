@@ -12,7 +12,7 @@ class Motors{
         Motors(){}
         void move(float speed, float  direction, float rotation);
     private:
-        int motorPins[4][3]={{0},{0},{0},{0}}; //{FL}, {Fr}, {BR}, {BL} 
+        int motorPins[4][3]={{(FL_INA), (FL_INB), (FL_PWM)},{(FR_INA), (FR_INB), (FR_PWM)},{(BR_INA), (BR_INB), (BR_PWM)},{(BL_INA), (BL_INB), (BL_PWM)}}; //{FL}, {Fr}, {BR}, {BL} 
 
 };
 

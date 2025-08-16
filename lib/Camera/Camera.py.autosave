@@ -24,8 +24,6 @@ draw = True # SET TO FALSE DURING A GAME
 thresholds = [((20, 50, -21, -2, -18, -1)), (46, 82, 24, 57, 8, 127)] # Attack, ORANGE
 
 sensor.reset()
-LED1 = machine.LED("LED_GREEN")#turn on green LED
-LED1.on()
 sensor.set_pixformat(sensor.RGB565)
 sensor.set_framesize(sensor.QVGA)
 sensor.skip_frames(time = 2000)
@@ -35,13 +33,12 @@ sensor.set_auto_whitebal(False)
 sensor.set_windowing((FRAME_WIDTH, FRAME_HEIGHT))
 clock = time.clock()
 uart = machine.UART(1, 115200, timeout_char = 10)
-LED1.off() # turn off green LED
 
 
 
 # LOOP
 while(True):
-    uart.write(bytes(254))
+    uart.write(bytes(255))
     # data = [120, 120, 120, 120]
     # img = sensor.snapshot()
     # blobs = img.find_blobs(thresholds, merge=True)

@@ -42,9 +42,9 @@ float LS::line_avoid(float ls_value[LS_NUM], int white_threshold){
             y_sum += ls_xy[1+(2*i)];
             num_of_num += 1;
         }
-        float average_x = x_sum/num_of_num 
-        float average_y = y_sum/num_of_num
-        float avoid_direction = atan2(y, x)   
+        float average_x = x_sum/num_of_num;
+        float average_y = y_sum/num_of_num;
+        float avoid_direction = atan2(y_sum, x_sum);   
         //float avoid_distance = sqrt(pow(average_x, 2) + (average_y, 2));
         // it should return avoid_direction and avoid_distance so what now ################################################################
         }
