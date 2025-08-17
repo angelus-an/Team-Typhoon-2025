@@ -10,7 +10,7 @@ void Camera::test() {
     if (Serial7.available()) {
         Serial.print("Serial7 data: ");
         while (Serial7.available()) {
-            byte incomingByte = Serial7.read();
+            uint8_t incomingByte = Serial7.read();
             Serial.print(incomingByte);
             Serial.print(" ");
         }

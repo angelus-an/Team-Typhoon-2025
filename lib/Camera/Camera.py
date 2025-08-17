@@ -34,7 +34,8 @@ sensor.set_auto_whitebal(False)
 #sensor.set_auto_exposure(False, exposure_us = )
 sensor.set_windowing((FRAME_WIDTH, FRAME_HEIGHT))
 clock = time.clock()
-uart = machine.UART(1, 9600, timeout_char = 10)
+uart = machine.UART(1, 115200, timeout_char = 100)
+uart.init(115200, bits=8, parity=512, stop=1, timeout_char=10)
 LED1.off() # turn off green LED
 
 

@@ -11,7 +11,7 @@
 #define absolute_max 0
 
 //Camera
-#define baud_rate 9600
+#define baud_rate 115200
 #define camera_serial Serial7
 #define cam_packet_size 6
 
