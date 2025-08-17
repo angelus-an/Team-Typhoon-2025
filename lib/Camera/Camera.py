@@ -34,21 +34,15 @@ sensor.set_auto_whitebal(False)
 #sensor.set_auto_exposure(False, exposure_us = )
 sensor.set_windowing((FRAME_WIDTH, FRAME_HEIGHT))
 clock = time.clock()
-uart = machine.UART(1, 115200, timeout_char = 100)
-uart.init(115200, bits=8, parity=512, stop=1, timeout_char=10)
+uart = machine.UART(1, 115200, timeout_char = 200)
 LED1.off() # turn off green LED
 
 
 
 # LOOP
 while(True):
-    LED1 = machine.LED("LED_BLUE")#turn on green LED
-    LED1.on()
+    uart.write("3")
     time.sleep(1)
-    LED1.off()
-    time.sleep(1)
-    uart.write(b"1")
-
     # data = [254, 254, 120, 120, 120, 120]
     # img = sensor.snapshot()
     # blobs = img.find_blobs(thresholds, merge=True)

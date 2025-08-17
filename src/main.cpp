@@ -29,7 +29,6 @@ PID orbit_pid(1.5, 0.0, 0.0, 10);
 
 
 void setup() {
-  Serial7.begin(baud_rate);
   motors.init();
   camera.init();
   
@@ -47,7 +46,7 @@ void setup() {
 
 void loop() {
   camera.test();
-  camera.read();
+  //camera.read();
 }
 //   Vect ball = camera.getBall();
  
