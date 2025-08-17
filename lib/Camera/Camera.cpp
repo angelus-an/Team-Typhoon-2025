@@ -3,7 +3,7 @@
 //byte [254, 254, attack_x, attack_y, orange_x, orange_y]
 
 void Camera::init(){
-    camera_serial.begin(baud_rate);
+    Serial7.begin(115200);
 }
 
 void Camera::test() {
@@ -15,6 +15,9 @@ void Camera::test() {
             Serial.print(" ");
         }
         Serial.println();
+    }
+    else{
+        Serial.println("No Data");
     }
 }
 
