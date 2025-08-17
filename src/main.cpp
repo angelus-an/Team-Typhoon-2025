@@ -4,7 +4,7 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <Camera.h>
-
+//#include <LS.h>
 #include <Pins.h>
 #include <Common.h>
 #include <Vect.h>
@@ -12,13 +12,14 @@
 
 
 
-Motors motor;
+Motors motors;
 PID compass_pid(compass_P, compass_I, compass_D, absolute_max);
 Adafruit_BNO055 bno;
 sensors_event_t currentHeading;
 sensors_event_t targetHeading;
 Camera camera;
 PID orbit_pid(1.5, 0.0, 0.0, 10);
+//LS lights;
 
 
 
@@ -28,9 +29,10 @@ PID orbit_pid(1.5, 0.0, 0.0, 10);
 
 
 void setup() {
-  Serial.begin(115200);
-  motor.init();
+  Serial7.begin(baud_rate);
+  motors.init();
   camera.init();
+  
   // I2Cscan();
   // while (!(bno.begin())){
   //   Serial.println("BNO not working");
@@ -44,26 +46,19 @@ void setup() {
 
 
 void loop() {
-  //BNO
-  //digitalWrite(13, HIGH);
-  // bno.getEvent(&currentHeading); //whenever want to access the actual bno heading use extract_bn0.orientation.x
-  // float heading = floatMod(currentHeading.orientation.x - targetHeading.orientation.x,360);
-  //  float correction = compass_pid.update(heading,0);
-  // motor.move(0,0,correction);
-
-  // //PID for ball  
+  camera.test();
   camera.read();
-  Vect ball = camera.getBall();
-  // Serial.println(ball.arg);
-
-  // if(ball.mag > 50) {
-  //   motor.move(1, ball.arg, 0); //correction
-  // }
-  // else {
-  //   float ang = -orbit_pid.update(ball.arg, 0);
-  //   motor.move(40, ang, 0); //correction
-  // }
 }
+//   Vect ball = camera.getBall();
+ 
+//   if(ball.mag > 50) {
+//     motors.move(1, ball.arg, 0); //correction
+//   }
+//   else {
+//     float ang = -orbit_pid.update(ball.arg, 0);
+//     motors.move(40, ang, 0); //correction
+//   }  
+// }
 
   //PID for goal
   // Vect attack_goal = camera.getAttack();
@@ -89,7 +84,11 @@ void loop() {
   
 
   
-
+//BNO
+  //digitalWrite(13, HIGH);
+  // bno.getEvent(&currentHeading); //whenever want to access the actual bno heading use extract_bn0.orientation.x
+  // float heading = floatMod(currentHeading.orientation.x - targetHeading.orientation.x,360);
+  //  float correction = compass_pid.update(heading,0);
 
 
 

@@ -13,6 +13,7 @@ class Camera {
         Camera(){};
         void init();
         void read();
+        void test();
         Vect getBall();
         Vect getAttack();
         // float yellow_distance;
@@ -22,7 +23,7 @@ class Camera {
         float ball_distance;
         float ball_angle; // I think it is six because of cam_packet_size -1 = 6
     private:
-       float cam_values[cam_packet_size - 1];
+       uint8_t cam_values[cam_packet_size - 1];
 };
 
 

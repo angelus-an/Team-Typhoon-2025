@@ -11,9 +11,9 @@
 #define absolute_max 0
 
 //Camera
-#define baud_rate 115200
+#define baud_rate 9600
 #define camera_serial Serial7
-#define cam_packet_size 5
+#define cam_packet_size 6
 
 //Attack
 #define ball_radius 5 //cm offsett from the of ball -> think of it like a range of error
