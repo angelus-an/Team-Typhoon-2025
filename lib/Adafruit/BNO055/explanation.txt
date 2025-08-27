@@ -1,0 +1,9 @@
+How do BNO055s work?
+
+BNO055s use an accelerometer, gyroscope and magnetometer and compiles all this data together (using a Kalman filter) to give precise measurements
+
+Set-up:
+    1. Connect VIN to 3.3V
+    2. Connect GND to GND
+    3. SCL -> SCL
+    4. SDA -> SDA

@@ -14,11 +14,11 @@
 
 Motors motors;
 PID compass_pid(compass_P, compass_I, compass_D, absolute_max);
-Adafruit_BNO055 bno;
 sensors_event_t currentHeading;
 sensors_event_t targetHeading;
 Camera camera;
 PID orbit_pid(1.5, 0.0, 0.0, 10);
+Adafruit_BNO055 bno = Adafruit_BNO055(55, BNO055_ADDRESS_A, &Wire); //pins 18 and 19 are Wire
 //LS lights;
 
 
@@ -29,24 +29,35 @@ PID orbit_pid(1.5, 0.0, 0.0, 10);
 
 
 void setup() {
-  motors.init();
+  // motors.init();
   camera.init();
-  
-  // I2Cscan();
-  // while (!(bno.begin())){
-  //   Serial.println("BNO not working");
+  // while(!bno.begin(OPERATION_MODE_IMUPLUS)) {
+  //       Serial.println("No BNO055 detected. Check your wiring or I2C ADDR.");
+  //       delay(1000);
   // }
   // bno.setExtCrystalUse(true);
   // targetHeading = currentHeading;  
   
-
 }
 
 
 
 void loop() {
   camera.test();
-  //camera.read();
+   //BNO Test 
+  // sensors_event_t event;
+  // bno.getEvent(&event);
+
+  // Serial.print("Orientation: ");
+  // Serial.print(event.orientation.x);
+  // Serial.print(" ");
+  // Serial.print(event.orientation.y);
+  // Serial.print(" ");
+  // Serial.print(event.orientation.z);
+  // Serial.println();
+
+  //add PID for compass correction here
+
 }
 //   Vect ball = camera.getBall();
  

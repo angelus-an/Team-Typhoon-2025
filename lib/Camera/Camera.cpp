@@ -8,16 +8,7 @@ void Camera::init(){
 
 void Camera::test() {
     if (Serial7.available()) {
-        Serial.print("Serial7 data: ");
-        while (Serial7.available()) {
-            uint8_t incomingByte = Serial7.read();
-            Serial.print(incomingByte);
-            Serial.print(" ");
-        }
-        Serial.println();
-    }
-    else{
-        Serial.println("No Data");
+        Serial.println(Serial7.read());
     }
 }
 

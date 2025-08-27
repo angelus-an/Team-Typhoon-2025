@@ -38,42 +38,40 @@ uart = machine.UART(1, 115200, timeout_char = 200)
 LED1.off() # turn off green LED
 
 
-
 # LOOP
 while(True):
-    uart.write("3")
-    time.sleep(1)
-    # data = [254, 254, 120, 120, 120, 120]
-    # img = sensor.snapshot()
-    # blobs = img.find_blobs(thresholds, merge=True)
-    # yellow = None
-    # blue = None
-    # orange = None
-    # # blob = max(blobs, key=lambda b: b.pixels())
-    # blobs = sorted(blobs, key=lambda blob: -blob.area())
-    # for blob in blobs:
-    #     if ATTACK_BLUE:
-    #         if data[2] == 120 and blob.code() == BLUE:
-    #             data[2] = (blob.cx()) # distance_x
-    #             data[3] = (blob.cy()) #distance_y
-    #         if data[4] == 120 and blob.code() == ORANGE:
-    #             data[4] = (blob.cx()) # distance_x
-    #             data[5] = (blob.cy()) #distance_y
-    #     else:
-    #         if data[2] == 120 and data[2] == 120 and blob.code() == YELLOW:
-    #             data[2] = (blob.cx()) # distance_x
-    #             data[3] = (blob.cy()) #distance_y
-    #         if data[4] == 120 and data[5] == 120 and blob.code() == ORANGE:
-    #             data[4] = (blob.cx()) # distance_x
-    #             data[5] = (blob.cy()) #distance_y
-    #     uart.write(bytes(data))
-    #     print(data)
-    # if draw:
-    #     img.draw_circle(120, 120, 116)
-    #     img.draw_line(int(round(FRAME_WIDTH)/2 - 10), int(round(FRAME_HEIGHT / 2)), int(round(FRAME_WIDTH / 2) + 10), int(round(FRAME_HEIGHT / 2)))
-    #     img.draw_line(int(round(FRAME_WIDTH)/2), int(round(FRAME_HEIGHT / 2) + 10), int(round(FRAME_WIDTH / 2)), int(round(FRAME_HEIGHT / 2) -10))
-    #     img.draw_line(int(round(FRAME_WIDTH)/2), int(round(FRAME_HEIGHT / 2) + 10), int(round(FRAME_WIDTH / 2)), int(round(FRAME_HEIGHT / 2) -10))
-    #     img.draw_line(120, 120,int(round(data[2])),int(round(data[3])))
-    #     img.draw_line(120, 120,int(round(data[4])),int(round(data[5])))
+    data = [254, 254, 120, 120, 120, 120]
+    img = sensor.snapshot()
+    clock.tick()
+    blobs = img.find_blobs(thresholds, merge=True)
+    yellow = None
+    blue = None
+    orange = None
+    # blob = max(blobs, key=lambda b: b.pixels())
+    blobs = sorted(blobs, key=lambda blob: -blob.area())
+    for blob in blobs:
+        if ATTACK_BLUE:
+            if data[2] == 120 and blob.code() == BLUE:
+                data[2] = (blob.cx()) # distance_x
+                data[3] = (blob.cy()) #distance_y
+            if data[4] == 120 and blob.code() == ORANGE:
+                data[4] = (blob.cx()) # distance_x
+                data[5] = (blob.cy()) #distance_y
+        else:
+            if data[2] == 120 and data[2] == 120 and blob.code() == YELLOW:
+                data[2] = (blob.cx()) # distance_x
+                data[3] = (blob.cy()) #distance_y
+            if data[4] == 120 and data[5] == 120 and blob.code() == ORANGE:
+                data[4] = (blob.cx()) # distance_x
+                data[5] = (blob.cy()) #distance_y
+        uart.write(bytes(data))
+        print(data)
+    if draw:
+        img.draw_circle(120, 120, 116)
+        img.draw_line(int(round(FRAME_WIDTH)/2 - 10), int(round(FRAME_HEIGHT / 2)), int(round(FRAME_WIDTH / 2) + 10), int(round(FRAME_HEIGHT / 2)))
+        img.draw_line(int(round(FRAME_WIDTH)/2), int(round(FRAME_HEIGHT / 2) + 10), int(round(FRAME_WIDTH / 2)), int(round(FRAME_HEIGHT / 2) -10))
+        img.draw_line(int(round(FRAME_WIDTH)/2), int(round(FRAME_HEIGHT / 2) + 10), int(round(FRAME_WIDTH / 2)), int(round(FRAME_HEIGHT / 2) -10))
+        img.draw_line(120, 120,int(round(data[2])),int(round(data[3])))
+        img.draw_line(120, 120,int(round(data[4])),int(round(data[5])))
 
 
